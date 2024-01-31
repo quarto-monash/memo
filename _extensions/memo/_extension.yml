@@ -7,6 +7,8 @@ contributes:
     pdf:
       papersize: a4
       fontsize: 11pt
+      date: today
+      date-format: "D MMMM YYYY"
       toc: false
       pdf-engine: pdflatex
       geometry:
@@ -18,7 +20,7 @@ contributes:
       cite-method: biblatex
       biblio-style: authoryear-comp
       template-partials:
-        - title.tex
+        - before-title.tex
       format-resources:
         - monash2.png
         - MBSportrait.jpg
