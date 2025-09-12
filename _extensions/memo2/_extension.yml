@@ -1,0 +1,30 @@
+title: Monash Memo
+author: Rob J Hyndman
+version: 1.0.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    typst:
+      template-partials:
+        - typst-template.typ
+        - typst-show.typ
+      fontsize: 11pt
+      date: today
+      date-format: "D MMMM YYYY"
+      lang: en
+      region: AU
+      paper: a4
+      toc: false
+      margin:
+        top: 1.5cm
+        bottom: 2cm
+        x: 2cm
+        y: 2cm
+      font-paths:
+        - fonts
+      format-resources:
+        - monash2.png
+        - MBSportrait.jpg
+        - EQUIS.png
+        - AMBA.png
+        - AACSB.png
