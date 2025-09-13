@@ -24,6 +24,7 @@
   region: "AU",
   font: "libertinus serif",
   fontsize: 11pt,
+  linestretch: 1.3,
   title-size: 1.5em,
   subtitle-size: 1.25em,
   heading-family: "Fira Sans",
@@ -45,14 +46,20 @@
     margin: margin,
     numbering: pagenumbering,
   )
-  set par(justify: true)
+  set par(justify: true, leading: linestretch * 0.7em)
   set text(lang: lang,
            region: region,
            font: font,
            size: fontsize)
   set heading(numbering: sectionnumbering)
   show heading: set text(font: heading-family, weight: heading-weight, style: heading-style, fill: heading-color)
+  show heading.where(level: 1): set block(above: 40pt)
 
+  // Make all links blue
+  show link: set text(fill: rgb(0, 0, 255))
+
+  // Optional branding logo at top
+  if branding {
   // Bottom right logos on first page only
   place(
     bottom + right,
@@ -60,16 +67,13 @@
     dy: 1cm,
     grid(
       columns: 3,
-      column-gutter: 5pt,
+      column-gutter: 9pt,
       image("AACSB.png", height: 0.7cm),
       image("EQUIS.png", height: 0.7cm),
       image("AMBA.png", height: 0.7cm)
     )
   )
-
-  // Optional branding logo at top
-  if branding {
-    v(-15pt)
+    v(-18pt)
     grid(
         columns: (1fr, 1fr),
         align: (left, right),
@@ -85,11 +89,11 @@
   // Gray box title header
   if title != none {
     rect(
-      fill: gray.lighten(80%),
-      stroke: gray,
+      fill: gray.lighten(50%),
+      //stroke: gray,
       width: 100%,
-      inset: 12pt,
-      radius: 4pt,
+      inset: 6pt,
+      radius: 2pt,
     )[
       #align(left)[
         #text(font: heading-family, size: title-size, weight: heading-weight)[#title]
@@ -99,7 +103,7 @@
         }
       ]
 
-      #v(8pt)
+      #v(4pt)
 
       // Author on left, date on right using grid
       #grid(

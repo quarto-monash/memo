@@ -94,5 +94,8 @@ $endif$
 $if(branding)$
   branding: $branding$,
 $endif$
+$if(linestretch)$
+  linestretch: $linestretch$,
+$endif$
   doc,
 )
