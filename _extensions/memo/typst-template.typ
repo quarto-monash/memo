@@ -48,6 +48,7 @@
   heading-style: "normal",
   heading-color: black,
   heading-line-height: 0.65em,
+  heading-size: 0.85em,
   branding: false,
   sectionnumbering: none,
   pagenumbering: "1",
@@ -78,8 +79,8 @@
            font: font,
            size: fontsize)
   set heading(numbering: sectionnumbering)
-  show heading: set text(font: heading-family, weight: heading-weight, style: heading-style, fill: heading-color)
-  show heading.where(level: 1): set block(above: 40pt)
+  show heading: set text(font: heading-family, size: heading-size, weight: heading-weight, style: heading-style, fill: heading-color)
+  show heading.where(level: 1): set block(above: 20pt)
 
   // Make all links blue
   show link: set text(fill: rgb(0, 0, 255))
