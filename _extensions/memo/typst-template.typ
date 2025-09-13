@@ -9,6 +9,22 @@
 //   - https://typst.app/docs/tutorial/making-a-template/
 //   - https://github.com/typst/templates
 
+// Helper function to extract plain text from content
+#let extract-text(content) = {
+  if content == none {
+    none
+  } else if type(content) == str {
+    content
+  } else {
+    // Convert content to string and remove square brackets
+    let text-repr = repr(content)
+    if text-repr.starts-with("[") and text-repr.ends-with("]") {
+      text-repr.slice(1, -1)
+    } else {
+      text-repr
+    }
+  }
+}
 
 #let article(
   title: none,
@@ -41,6 +57,16 @@
   toc_indent: 1.5em,
   doc,
 ) = {
+  // Set PDF metadata
+  set document(
+    title: extract-text(title),
+    author: if authors != none {
+      authors.map(author => extract-text(author.name))
+    } else {
+      ()
+    },
+    date: if date != none { auto } else { none },
+  )
   set page(
     paper: paper,
     margin: margin,
