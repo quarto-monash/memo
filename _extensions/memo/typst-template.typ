@@ -57,7 +57,8 @@
 
   // Make all links blue
   show link: set text(fill: rgb(0, 0, 255))
-
+  // Math font
+  show math.equation: set text(font: "Libertinus math")
   // Optional branding logo at top
   if branding {
   // Bottom right logos on first page only
