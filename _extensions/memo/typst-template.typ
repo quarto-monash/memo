@@ -67,6 +67,7 @@
   set heading(numbering: sectionnumbering)
   show heading: set text(font: heading-family, size: heading-size, weight: heading-weight, style: heading-style, fill: heading-color)
   show heading.where(level: 1): set block(above: 20pt)
+  show outline: set text(font: heading-family, size: 0.85em)
 
   // Make all links blue
   show link: set text(fill: rgb(0, 0, 255))
