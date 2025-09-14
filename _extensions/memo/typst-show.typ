@@ -1,6 +1,5 @@
-
 // Typst custom formats typically consist of a 'typst-template.typ' (which is
-                                                                     // the source code for a typst template) and a 'typst-show.typ' which calls the
+// the source code for a typst template) and a 'typst-show.typ' which calls the
 // template's function (forwarding Pandoc metadata values as required)
 //
 // This is an example 'typst-show.typ' file (based on the default template
@@ -23,7 +22,7 @@ $if(by-author)$
   authors: (
 $for(by-author)$
 $if(it.name.literal)$
-    ( name: [$it.name.literal$],
+    ( name: "$it.name.literal$",
       affiliation: [$for(it.affiliations)$$it.name$$sep$, $endfor$],
       email: [$it.email$] ),
 $endif$
