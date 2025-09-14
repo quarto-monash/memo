@@ -16,12 +16,56 @@
   } else if type(content) == str {
     content
   } else {
-    // Convert content to string and remove square brackets
+    // For content objects, we need to handle them differently
     let text-repr = repr(content)
-    if text-repr.starts-with("[") and text-repr.ends-with("]") {
+
+    // Handle sequence(...) format that Typst uses for complex content
+    if text-repr.starts-with("sequence(") and text-repr.ends-with(")") {
+      // Extract the content inside sequence(...)
+      let inner = text-repr.slice(9, -1) // Remove "sequence(" and ")"
+
+      // Split by commas but be careful about nested structures
+      let parts = ()
+      let current = ""
+      let bracket-depth = 0
+      let in-quotes = false
+
+      for char in inner {
+        if char == "\"" and bracket-depth == 0 {
+          in-quotes = not in-quotes
+        } else if char == "[" and not in-quotes {
+          bracket-depth += 1
+        } else if char == "]" and not in-quotes {
+          bracket-depth -= 1
+        } else if char == "," and bracket-depth == 0 and not in-quotes {
+          parts.push(current.trim())
+          current = ""
+          continue
+        }
+        current += char
+      }
+      if current.trim() != "" {
+        parts.push(current.trim())
+      }
+
+      // Extract text from each part
+      let text-parts = ()
+      for part in parts {
+        if part.starts-with("[") and part.ends-with("]") {
+          // Remove brackets and extract the text content
+          let inner-text = part.slice(1, -1)
+          text-parts.push(inner-text)
+        }
+      }
+
+      // Join all parts
+      text-parts.join("")
+    } else if text-repr.starts-with("[") and text-repr.ends-with("]") {
+      // Simple bracketed content
       text-repr.slice(1, -1)
     } else {
-      text-repr
+      // Remove quotes if present
+      text-repr.trim("\"")
     }
   }
 }
