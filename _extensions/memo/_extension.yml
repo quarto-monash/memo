@@ -40,7 +40,7 @@ contributes:
       toc: false
       bibliographystyle: apa
       margin:
-        top: 1.5cm
+        top: 2.7cm
         bottom: 2cm
         x: 2cm
         y: 2cm

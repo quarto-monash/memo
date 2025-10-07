@@ -58,6 +58,24 @@
     paper: paper,
     margin: margin,
     numbering: pagenumbering,
+    header: context {
+      if counter(page).get().first() > 1 and title != none {
+        grid(
+          columns: (1fr, auto),
+          align: (left, right),
+          [#text(font: heading-family, size: 10pt)[#title]],
+          [#text(font: heading-family, size: 10pt)[#counter(page).display()]],
+        )
+        v(-6pt)
+        line(length: 100%, stroke: 0.5pt)
+        v(6pt) // Add some space below the line
+      }
+    },
+    footer: context {
+      if counter(page).get().first() == 1 {
+        align(center)[#counter(page).display()]
+      }
+    },
   )
   set par(justify: true, leading: linestretch * 0.7em)
   set text(lang: lang,
@@ -75,31 +93,31 @@
   show math.equation: set text(font: "Libertinus math")
   // Optional branding logo at top
   if branding {
-  // Bottom right logos on first page only
-  place(
-    bottom + right,
+    // Bottom right logos on first page only
+    place(
+      bottom + right,
     dx: 0cm,
     dy: 1cm,
-    grid(
-      columns: 3,
-      column-gutter: 9pt,
-      image("AACSB.png", height: 0.7cm),
-      image("EQUIS.png", height: 0.7cm),
-      image("AMBA.png", height: 0.7cm)
+      grid(
+        columns: 3,
+        column-gutter: 9pt,
+        image("AACSB.png", height: 0.7cm), image("EQUIS.png", height: 0.7cm), image("AMBA.png", height: 0.7cm),
+      ),
     )
-  )
-    v(-18pt)
+    v(-1.7cm)
     grid(
-        columns: (1fr, 1fr),
-        align: (left, right),
-        [
-          #image("monash2.png", height: 1.5cm)
-        ],
-        [
-          #image("MBSportrait.jpg", height: 1.5cm)
-        ]
+      columns: (1fr, 1fr),
+      align: (left, right),
+      [
+        #image("monash2.png", height: 1.5cm)
+      ],
+      [
+        #image("MBSportrait.jpg", height: 1.5cm)
+      ],
     )
     v(10pt)
+  } else {
+    v(-1cm)
   }
   // Gray box title header
   if title != none {
