@@ -83,8 +83,14 @@
            font: font,
            size: fontsize)
   set heading(numbering: sectionnumbering)
-  show heading: set text(font: heading-family, size: heading-size, weight: heading-weight, style: heading-style, fill: heading-color)
-  show heading.where(level: 1): set block(above: 20pt)
+  show heading: set text(
+    font: heading-family,
+    size: heading-size,
+    weight: heading-weight,
+    style: heading-style,
+    fill: heading-color,
+  )
+  show heading.where(level: 1): set block(above: 20pt, below: 12pt)
   show outline: set text(font: heading-family, size: 0.85em)
 
   // Indented lists
