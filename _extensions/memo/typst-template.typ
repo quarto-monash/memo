@@ -78,10 +78,7 @@
     },
   )
   set par(justify: true, leading: linestretch * 0.7em)
-  set text(lang: lang,
-           region: region,
-           font: font,
-           size: fontsize)
+  set text(lang: lang, region: region, font: font, size: fontsize)
   set heading(numbering: sectionnumbering)
   show heading: set text(
     font: heading-family,
@@ -98,6 +95,7 @@
   show enum: set block(above: 1.2em, below: 1.2em)
   show list: set list(indent: 1em)
   show enum: set enum(indent: 1em)
+
   // Make all links blue
   show link: set text(fill: rgb(0, 0, 255))
   // Math font
@@ -107,8 +105,8 @@
     // Bottom right logos on first page only
     place(
       bottom + right,
-    dx: 0cm,
-    dy: 1cm,
+      dx: 0cm,
+      dy: 1cm,
       grid(
         columns: 3,
         column-gutter: 9pt,
@@ -162,7 +160,7 @@
           #if date != none {
             text(font: heading-family, size: 10pt)[#date]
           }
-        ]
+        ],
       )
     ]
 
@@ -176,11 +174,11 @@
       toc_title
     }
     block(above: 0em, below: 2em)[
-    #outline(
-      title: toc_title,
-      depth: toc_depth,
-      indent: toc_indent
-    );
+      #outline(
+        title: toc_title,
+        depth: toc_depth,
+        indent: toc_indent,
+      );
     ]
   }
 
