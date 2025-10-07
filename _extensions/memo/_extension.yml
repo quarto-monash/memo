@@ -38,6 +38,7 @@ contributes:
       region: AU
       paper: a4
       toc: false
+      bibliographystyle: apa
       margin:
         top: 1.5cm
         bottom: 2cm
