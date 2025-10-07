@@ -87,6 +87,11 @@
   show heading.where(level: 1): set block(above: 20pt)
   show outline: set text(font: heading-family, size: 0.85em)
 
+  // Indented lists
+  show list: set block(above: 1.2em, below: 1.2em)
+  show enum: set block(above: 1.2em, below: 1.2em)
+  show list: set list(indent: 1em)
+  show enum: set enum(indent: 1em)
   // Make all links blue
   show link: set text(fill: rgb(0, 0, 255))
   // Math font
