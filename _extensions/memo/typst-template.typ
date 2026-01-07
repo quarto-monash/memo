@@ -153,6 +153,7 @@
         align: (left, right),
         [
           #if authornames != "" {
+            set par(justify: false)
             text(font: heading-family, size: 12pt)[#authornames]
           }
         ],
