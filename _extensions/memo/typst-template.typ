@@ -17,7 +17,7 @@
   abstract: none,
   abstract-title: none,
   cols: 1,
-  margin: (x: 2cm, y: 2cm, top: 1.5cm, bottom: 2cm),
+  margin: (left: 2cm, right: 2cm, top: 1.5cm, bottom: 2cm),
   paper: "a4",
   lang: "en",
   region: "AU",
@@ -149,7 +149,7 @@
 
       // Author on left, date on right using grid
       #grid(
-        columns: (1fr, 1fr),
+        columns: (0.6fr, 0.4fr),
         align: (left, right),
         [
           #if authornames != "" {
