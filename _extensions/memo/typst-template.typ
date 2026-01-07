@@ -145,8 +145,6 @@
         }
       ]
 
-      #v(4pt)
-
       // Author on left, date on right using grid
       #grid(
         columns: (0.6fr, 0.4fr),
@@ -165,7 +163,7 @@
       )
     ]
 
-    v(20pt)
+    v(10pt)
   }
 
   if toc {
