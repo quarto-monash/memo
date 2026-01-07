@@ -43,7 +43,7 @@
 ) = {
   // Define authornames string from authors list
   let authornames = if authors != none {
-    authors.map(author => author.name).join(", ")
+    authors.map(author => author.name.replace("~", sym.space.nobreak)).join(", ")
   } else {
     ""
   }
